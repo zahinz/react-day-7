@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import SignIn from "./pages/signIn";
+import Register from "./pages/register";
+import Dashboard from "./pages/dashboard";
+import { connect } from "react-redux";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router basename={process.env.PUBLIC_URL}>
+      <Switch>
+        <Route path="/" component={SignIn} exact></Route>
+        <Route path="/register" component={Register} exact />
+        <Route path="/dashboard" component={Dashboard} exact />
+      </Switch>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProp = (state) => ({
+  isSignedIn: state.signin.isSignedIn,
+});
+
+const mapDispatchToProp = {};
+
+export default connect(mapStateToProp, mapDispatchToProp)(App);
