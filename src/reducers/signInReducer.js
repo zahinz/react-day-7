@@ -8,12 +8,15 @@ const defaultState = {
 };
 
 const signInReducer = (state, action) => {
+  if (typeof state === "undefined") {
+    return defaultState;
+  }
   switch (action.type) {
     case type.SIGNIN:
       return {
         isLoading: true,
         isSignIn: false,
-        user: {},
+        user: action.payload,
         error: null,
       };
 
@@ -33,7 +36,7 @@ const signInReducer = (state, action) => {
         error: action.error,
       };
     default:
-      return defaultState;
+      return state;
   }
 };
 

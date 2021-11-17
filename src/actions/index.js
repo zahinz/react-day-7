@@ -29,6 +29,7 @@ export const submitSignIn = (data) => (dispatch) => {
   try {
     dispatch({
       type: type.SIGNIN,
+      payload: data,
     });
     setTimeout(() => {
       dispatch({

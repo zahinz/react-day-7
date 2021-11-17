@@ -38,6 +38,9 @@ class SignIn extends React.Component {
 
   render() {
     return (
+      // redirect when state signedIn
+      // {this.props.signedInStatus == true ? }
+
       <div className="bg-gray-200 w-screen h-screen flex justify-center items-center">
         <div className="lg:w-1/3 md:w-3/5 sm:w-5/6 text-center">
           <p className="text-3xl font-bold mb-8">Welcome 👋</p>
@@ -77,6 +80,7 @@ class SignIn extends React.Component {
 
 const mapStateToProp = (state) => ({
   userData: state.register.data,
+  signedInStatus: state.register.isSignIn,
 });
 
 const mapDispatchToProp = {

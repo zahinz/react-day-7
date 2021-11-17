@@ -8,6 +8,9 @@ const defaultState = {
 };
 
 const registerReducer = (state, action) => {
+  if (typeof state === "undefined") {
+    return defaultState;
+  }
   switch (action.type) {
     case type.REGISTER:
       return {
@@ -42,7 +45,7 @@ const registerReducer = (state, action) => {
       };
 
     default:
-      return defaultState;
+      return state;
   }
 };
 
